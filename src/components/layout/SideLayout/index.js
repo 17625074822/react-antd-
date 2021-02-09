@@ -47,7 +47,7 @@ function Index(props) {
     return (
         <div>
             <Layout className={"SideLayout"}>
-                <Sider trigger={null} collapsible collapsed={collapsed}>
+                <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg">
                     <div className="logo">
                         <Link to={'/'}>
                             <div className="logo">{collapsed ? 'MC' : 'Social MC'}</div>
