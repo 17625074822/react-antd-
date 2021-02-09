@@ -1,0 +1,53 @@
+.SearchArea {
+
+  //搜索区加背景色
+  padding: 8px 10px !important;
+  border-radius: 6px;
+  background: #fbfbfb;
+  border: 1px solid #d9d9d9;
+
+  margin-bottom: 15px;
+
+  .inline-search-btns {
+
+    & .ant-btn:last-child {
+      margin-left: 10px;
+    }
+
+  }
+
+  .search-btns {
+    margin: 3px;
+    //height: 28px;
+    display: flex;
+    justify-content: flex-end;
+    //align-items: center;
+
+    .ant-form-item-control {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .ant-btn {
+      margin-left: 10px;
+    }
+
+  }
+
+  // 多行搜索
+  .ant-advanced-search-form {
+
+    .ant-form-item {
+      display: flex;
+    }
+
+    .ant-picker {
+      display: flex;
+    }
+
+    .ant-form-item-control-wrapper {
+      flex: 1;
+    }
+  }
+
+}

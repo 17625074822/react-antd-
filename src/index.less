@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #f0f2f5 !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+
+.label-character-2 { // 2个汉字的label对齐
+  .ant-form-item-label {
+    min-width: 49px;
+  }
+}
+
+.label-character-3 { // 3个汉字的label对齐
+  .ant-form-item-label {
+    min-width: 62px;
+  }
+}
+
+
+// 4个汉字的label对齐
+.label-character-4 .ant-form-item-label,
+.label-character-4 .ant-legacy-form-item-label {
+  min-width: 77px;
+}
+
+
+// 5个汉字的label对齐
+.label-character-5 .ant-form-item-label,
+.label-character-5 .ant-legacy-form-item-label {
+  min-width: 94px;
+}
+
+
+// 6个汉字的label对齐
+.label-character-6 .ant-form-item-label,
+.label-character-6 .ant-legacy-form-item-label {
+  min-width: 113px;
+}
+
+.ant-advanced-search-form {
+  .ant-legacy-form-item {
+    margin: 3px !important;
+  }
+
+  .ant-form-item {
+    margin: 3px !important;
+  }
+}
+
+// 表单
+.ant-advanced-inline-form {
+
+  //时间控件宽度自适应
+  .ant-picker {
+    display: flex;
+  }
+
+  .ant-legacy-form-item {
+    display: flex;
+    margin-bottom: 5px;
+  }
+
+  .ant-legacy-form-item-control-wrapper {
+    flex: 1;
+  }
+
+  .ant-legacy-form-item-with-help {
+    margin-bottom: 0;
+  }
+
+  // 不是必选的字段，加一个orm-item-optional类
+  // 前面也加上一个白色*号用于占位对齐
+  .form-legacy-item-optional::before {
+    display: inline-block;
+    margin-right: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: SimSun, sans-serif;
+    line-height: 1;
+    content: '*';
+  }
+}
+
+.ant-form .ant-form-item-control {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+
+.action-btns {
+  text-align: center;
+
+  .ant-btn {
+    padding: 0 3px;
+    border: 0;
+    height: 19px;
+  }
+
+  a {
+    padding: 0 3px;
+  }
+}
+
+
+.ant-table {
+  border: 1px solid #e8e8e8;
+  border-bottom: 0;
+}
+
+
+//去掉表单中，标签后的冒号
+.ant-form-item-label > label::after {
+  content: "" !important;
+}
+
+.ant-legacy-form-item-label > label::after {
+  content: "" !important;
+}
+
