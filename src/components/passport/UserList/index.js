@@ -4,9 +4,7 @@ import {ReloadOutlined, SearchOutlined} from '@ant-design/icons';
 import {Modal, Row, Col, Form, Button, Input, Pagination, Table, Select} from "antd";
 import moment from 'moment';
 import SearchArea from "../../../components/layout/SearchArea";
-import PageTop from "../../../components/layout/PageTop";
 import PageBottom from "../../../components/layout/PageBottom";
-import {Link} from "react-router-dom";
 import UserDetail from "../UserDetail";
 
 const Option = Select.Option
@@ -116,11 +114,6 @@ function UserList(props) {
             align: 'center',
             render: (text, record) => (
                 <div className="action-btns">
-                    {/*<Link   onClick={() => {*/}
-                    {/*    selectUserId = record.id*/}
-                    {/*    setSelectUserId(selectUserId)*/}
-                    {/*    setUserDetailVisible(true)*/}
-                    {/*}}>详情</Link>*/}
                     <Button type={"link"} onClick={() => {
                         // 设置选中的用户id
                         selectUserId = record.id
