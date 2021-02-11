@@ -116,21 +116,18 @@ function UserList(props) {
             align: 'center',
             render: (text, record) => (
                 <div className="action-btns">
-                    <Link  onClick={()=>{
+                    {/*<Link   onClick={() => {*/}
+                    {/*    selectUserId = record.id*/}
+                    {/*    setSelectUserId(selectUserId)*/}
+                    {/*    setUserDetailVisible(true)*/}
+                    {/*}}>详情</Link>*/}
+                    <Button type={"link"} onClick={() => {
+                        // 设置选中的用户id
                         selectUserId = record.id
                         setSelectUserId(selectUserId)
                         setUserDetailVisible(true)
-                    }}>详情</Link>
+                    }}>详情</Button>
                 </div>
-                // <Button type={"link"} onClick={() => {
-                //             // 设置选中的用户id
-                //             selectUserId = record.id
-                //             setSelectUserId(selectUserId)
-                //             setUserDetailVisible(true)
-                //         }}>详情</Button>
-                // <div className="action-btns">
-                //     <Link to={`/passport/user/edit/${record.id}`}>详情</Link>
-                // </div>
             )
         },
     ]
@@ -300,7 +297,7 @@ function UserList(props) {
             <div>
                 {/*用户详情*/}
                 <Modal
-                    style={{ top: 20 }}
+                    style={{top: 20}}
                     title={'用户详情'}
                     visible={userDetailVisible}
                     footer={null} width={1000}

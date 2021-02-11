@@ -48,9 +48,10 @@ function Index(props) {
 
     // 高度自适应
     useEffect(() => {
+        console.log("进来了")
         let content = document.getElementsByClassName('content')[0]
         content.style.minHeight = window.innerHeight - 78 + "px";
-    }, [])
+    }, [props])
 
     return (
         <Layout className={"SideLayout"}>
@@ -98,7 +99,7 @@ function Index(props) {
                         // theme={headerTheme}
                         mode="horizontal"
                         defaultSelectedKeys={['2']}
-                        style={{lineHeight: '47px', float: 'right', borderColor: "#fff"}}
+                        style={{lineHeight: '45px', float: 'right', borderColor: "#fff"}}
                     >
                         <SubMenu
                             title={
