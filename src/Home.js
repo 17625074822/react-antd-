@@ -2,6 +2,7 @@ import React from 'react'
 import {Switch, Route, Link} from "react-router-dom"
 import SideLayout from "./components/layout/SideLayout"
 import Passport from "./pages/passport";
+import RedEnvelope from "./pages/gift/redEnvelope/components";
 
 function Welcome(props) {
     return (
@@ -14,24 +15,23 @@ function Welcome(props) {
 
 function Home() {
     return (
-        <div className={'Home'}>
+        <div style={{height: "100%"}}>
             <SideLayout>
-                <div >
-                    <Switch>
-                        <Route exact path={'/'} component={Welcome}/>
-                        <Route path={'/passport'} component={Passport}/>
-                        {/*<Route path={'/example'} component={Example}/>*/}
-                        {/*<Route path={'/wms'} component={Wms}/>*/}
-                        {/*<Route path={'/finance'} component={FinanceRoute}/>*/}
-                        {/*<Route path={'/support'} component={Support}/>*/}
-                        {/*<Route path={'/sale'} component={Sale}/>*/}
-                        {/*<Route path={'/coupon'} component={Coupon}/>*/}
-                        {/*<Route path={'/crm'} component={Crm}/>*/}
-                        {/*<Route path={'/avocation'} component={Avocation}/>*/}
-                        {/*<Route path={'/report'} component={Statics}/>*/}
-                        {/*<Route path={'/ext'} component={Ext}/>*/}
-                    </Switch>
-                </div>
+                <Switch>
+                    <Route exact path={'/'} component={Welcome}/>
+                    <Route path={'/passport'} component={Passport}/>
+                    <Route path={'/gift'} component={RedEnvelope}/>
+                    {/*<Route path={'/example'} component={Example}/>*/}
+                    {/*<Route path={'/wms'} component={Wms}/>*/}
+                    {/*<Route path={'/finance'} component={FinanceRoute}/>*/}
+                    {/*<Route path={'/support'} component={Support}/>*/}
+                    {/*<Route path={'/sale'} component={Sale}/>*/}
+                    {/*<Route path={'/coupon'} component={Coupon}/>*/}
+                    {/*<Route path={'/crm'} component={Crm}/>*/}
+                    {/*<Route path={'/avocation'} component={Avocation}/>*/}
+                    {/*<Route path={'/report'} component={Statics}/>*/}
+                    {/*<Route path={'/ext'} component={Ext}/>*/}
+                </Switch>
             </SideLayout>
         </div>
     )

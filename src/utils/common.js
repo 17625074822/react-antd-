@@ -1,6 +1,7 @@
 import {Modal, message} from 'antd';
 import axios from "axios";
 import qs from 'qs';
+import {baseApi, artifactId} from "../config-local";
 
 let common = {}
 
@@ -8,6 +9,22 @@ common.redirectToLogin = function () {
     window.location = '/login'
 }
 
+let tokenKey = `${artifactId}-token`
+
+common.setToken = function (token) {
+    console.log('token', token)
+    if (token) {
+        window.localStorage.setItem(tokenKey, token)
+    } else {
+        window.localStorage.removeItem(tokenKey)
+    }
+}
+
+common.getToken = function () {
+    let token = window.localStorage.getItem(tokenKey)
+    console.log('tokenKey', tokenKey)
+    return token == null ? '' : token
+}
 
 common.base64Encode = function (input) {
     let _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
@@ -60,9 +77,9 @@ common.alert = function (content, callback, title) {
         },
     });
 
-    // window.popup.alert(content, function () {
-    //     callback()
-    // });
+    window.popup.alert(content, function () {
+        callback()
+    });
 
 }
 
@@ -82,7 +99,7 @@ common.toast = function (content, callback, duration) {
     //     // title: 'This is a notification message',
     //     content: content,
     // });
-
+    //
     // window.popup.cute(content, duration * 1000, callback);
 }
 
@@ -180,6 +197,30 @@ common.confirm = function (message, okCallback, cancelCallback, title) {
 }
 
 
+common.getApiUrl = function (api, param = {}) {
+
+    if (api.startsWith('http')) {
+        return api
+    }
+
+    let queryArr = []
+    for (let k in param) {
+        queryArr.push(encodeURIComponent(k) + '=' + encodeURIComponent(param[k]))
+    }
+
+    let queryStr = ''
+    if (queryArr.length > 0) {
+        const mark = api.indexOf('?') >= 0 ? '&' : '?'
+        queryStr = mark + queryArr.join('&')
+    }
+
+    return common.getBaseApiUrl() + api + queryStr
+}
+
+common.getBaseApiUrl = function () {
+    return baseApi
+}
+
 common.ajax = function (method, api, data, config = {}) {
 
     data = data || {}
@@ -196,6 +237,7 @@ common.ajax = function (method, api, data, config = {}) {
         'filename': 'temp.xlsx',            // 下载文件名
     }
 
+    // todo 啥意思??
     config = Object.assign(configDefault, config)
 
     if (!isGet && config['contentType'].toLowerCase() === 'application/x-www-form-urlencoded') {
@@ -264,7 +306,7 @@ common.ajax = function (method, api, data, config = {}) {
                 case 'INVALID_TOKEN':
                     if (config.interceptInvalidToken) {
 
-                        common.setToken(null)
+                        // common.setToken(null)
 
                         if (config.displayError) {
                             common.toast('请登录')

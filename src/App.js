@@ -1,6 +1,5 @@
 import './App.less';
 import {Switch, Route, BrowserRouter} from "react-router-dom"
-
 import React from "react";
 import Login from "./pages/login";
 import Home from "./Home";

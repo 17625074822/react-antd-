@@ -1,0 +1,204 @@
+
+.Login {
+  background-image: url("../../img/banner1.png");
+  background-position: center;
+  height: calc(100vh);
+  display: flex;
+  align-items: center;
+
+  .big-box {
+    width: 1000px;
+    //margin-top: 40px;
+    margin: 0 auto;
+  }
+
+  .main-part {
+    width: 1000px;
+    height: 570px;
+    box-shadow: 0px 20px 80px 0px rgba(0, 0, 0, 0.3);
+    margin-top: 40px;
+    z-index: 99;
+  }
+
+  .left-box, .right-box {
+    width: 500px;
+    height: 570px;
+    float: left;
+  }
+
+  .left-box {
+    background-color: #3a485a;
+    background-image: url("../../img/banner.png");
+    background-repeat: no-repeat;
+
+
+    .introduce {
+      margin: 80px;
+    }
+  }
+
+
+  .left-box .introduce h2 {
+    color: white;
+  }
+
+
+  .right-box {
+    background: white;
+  }
+
+
+  .left-box .introduce .left-bottom .edition {
+    font-weight: bold;
+    float: left;
+  }
+
+  .left-box .introduce .left-bottom .red-hot {
+    height: 30px;
+    float: left;
+  }
+
+  .left-box .introduce .left-bottom .red-hot .hyphen {
+    margin: 0 10px;
+    height: 10px;
+    line-height: 10px;
+  }
+
+  .left-box .introduce .left-bottom img {
+    width: 15px;
+    height: 15px;
+    margin-top: 13px;
+    padding: 0 2px;
+  }
+
+
+  .active {
+    width: 352px;
+    /* height:38px; */
+    background: #fff0f0;
+    border: 1px solid #d95c5c;
+  }
+
+  .right-box .login {
+    padding: 64px 75px 48px;
+  }
+
+  .right-box .login .login-top {
+    height: 31px;
+    margin: 0 0 24px;
+  }
+
+  .right-box .login .login-top .login-title {
+    float: left;
+    color: #40485b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Liberation Sans", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, SimSun, "WenQuanYi Zen Hei Sharp", sans-serif;
+  }
+
+  .right-box .login .login-top .butt {
+    float: right;
+    margin-top: 13px;
+    font-size: 14px;
+  }
+
+  .right-box .login .login-top .butt .no {
+    color: #40485b;
+  }
+
+  .right-box .login .login-top a {
+    color: #005980;
+  }
+
+
+  .right-box .login .login-username input {
+    width: 350px;
+    height: 38px;
+    border: 1px solid #dfe3e9;
+    background: none;
+    border-radius: 3px;
+    text-indent: 1em;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .right-box .login .remember .check {
+    margin-top: 16.8px;
+    float: left;
+  }
+
+  .right-box .login .remember .check input {
+    width: 17px;
+    height: 17px;
+    line-height: 17px;
+    left: 0;
+    vertical-align: middle;
+  }
+
+  .right-box .login .remember .check .me {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .right-box .login .remember .note {
+    margin-top: 16.8px;
+    float: right;
+  }
+
+
+  .right-box .login .login-button button {
+    width: 350px;
+    height: 35px;
+    line-height: 22px;
+    margin-top: 16.8px;
+    background: #1890ff;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 3px;
+  }
+
+  .right-box .login .forgot {
+    margin-top: 13px;
+    text-align: center;
+  }
+
+
+  .footer {
+    text-align: center;
+    margin: 50px 0 0;
+  }
+
+  .footer a {
+    color: #3a485a;
+    padding: 0 3px;
+    font-size: 14px;
+  }
+
+  .footer a img {
+    width: 10px;
+  }
+
+  .background {
+    display: none;
+  }
+
+  @media screen and (min-height: 750px) {
+
+    .background {
+      display: block;
+    }
+
+    .background .png2 {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    .background .png1 {
+      position: fixed;
+      bottom: 0;
+      z-index: -1;
+    }
+  }
+
+}

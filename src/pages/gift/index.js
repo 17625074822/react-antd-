@@ -1,14 +1,14 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 
-import User from "./user"
+import RedEnvelope from "./redEnvelope/components";
 
 function Passport() {
 
     return (
         <div>
             <Switch>
-                <Route path={'/passport/user'} component={User}/>
+                <Route path={'/gift/redEnvelope'} component={RedEnvelope}/>
                 {/*<Route path={'/passport/employee'} component={Employee}/>*/}
                 {/*<Route path={'/passport/partner'} component={Partner}/>*/}
             </Switch>

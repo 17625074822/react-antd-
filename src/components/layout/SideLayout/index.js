@@ -1,9 +1,9 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Button, Layout, Menu} from "antd";
 import {connect} from 'react-redux'
 import common from "../../../utils/common"
 import {
-    MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined
+    MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined, RedEnvelopeOutlined
 } from '@ant-design/icons';
 import "./index.less"
 import {Link, withRouter} from "react-router-dom"
@@ -17,15 +17,14 @@ const menuTreeNode = [
         title: "用户管理",
         icon: <UserOutlined/>,
         children: [
-            {title: '用户列表', url: '/passport/customer'},
+            {title: '用户列表', url: '/passport/user'},
         ]
     },
     {
         title: "红包管理",
-        key: '/admin/money',
-        icon: <UserOutlined/>,
+        icon: <RedEnvelopeOutlined/>,
         children: [
-            {title: '红包列表', url: '22'},
+            {title: '红包列表', url: '/gift/redEnvelope'},
         ]
     }
 ]
@@ -33,95 +32,95 @@ const menuTreeNode = [
 function Index(props) {
 
     let history = useHistory()
+    let defaultOpenKeys = "/"
     let [collapsed, setCollapsed] = useState(false)
+
     let toggle = () => {
         setCollapsed(!collapsed)
     };
 
     // 点击菜单跳转页面
     function handleMenuClick(item, key, keyPath, domEvent) {
+        console.log(console.log("key", key, keyPath, domEvent))
         console.log("url", item.item.props.url)
         history.push(item.item.props.url)
     }
 
+    // 高度自适应
+    useEffect(() => {
+        let content = document.getElementsByClassName('content')[0]
+        content.style.minHeight = window.innerHeight - 78 + "px";
+    }, [])
+
     return (
-        <div>
-            <Layout className={"SideLayout"}>
-                <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg">
-                    <div className="logo">
-                        <Link to={'/'}>
-                            <div className="logo">{collapsed ? 'MC' : 'Social MC'}</div>
-                        </Link>
-                    </div>
-                    <Menu theme="dark" mode="inline"
-                          onClick={handleMenuClick}>
-                        {
-                            menuTreeNode.map((sub, subIndex) => (
-                                <SubMenu key={subIndex} icon={sub.icon} title={sub.title}>
-                                    {
-                                        sub.children.map((item, itemIndex) => {
-                                            return (
-                                                <Menu.Item
-                                                    key={`sub${subIndex}-${itemIndex}`}
-                                                    url={item.url}>
-                                                    {item.title}
-                                                </Menu.Item>
-                                            )
-                                        })
-                                    }
-                                </SubMenu>
-
-                            ))
-                        }
-                    </Menu>
-                </Sider>
-                <Layout className="site-layout">
-                    <Header className="site-layout-background" style={{padding: 0}}>
-                        {
-                            collapsed ?
-                                <MenuUnfoldOutlined
-                                    className="trigger"
-                                    onClick={toggle}
-                                /> :
-                                <MenuFoldOutlined
-                                    className="trigger"
-                                    onClick={toggle}
-                                />
-                        }
-                        <Menu
-                            // theme={headerTheme}
-                            mode="horizontal"
-                            defaultSelectedKeys={['2']}
-                            style={{lineHeight: '47px', float: 'right'}}
-                        >
-                            <SubMenu
-                                title={
-                                    <span className="submenu-title-wrapper">{"管理员"}</span>
+        <Layout className={"SideLayout"}>
+            <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg">
+                <div className="logo">
+                    <Link to={'/'}>
+                        <div className="logo">{collapsed ? 'MC' : 'Social MC'}</div>
+                    </Link>
+                </div>
+                <Menu theme="dark" mode="inline" onClick={handleMenuClick}>
+                    {
+                        menuTreeNode.map((sub, subIndex) => (
+                            <SubMenu key={subIndex} icon={sub.icon} title={sub.title}>
+                                {
+                                    sub.children.map((item, itemIndex) => {
+                                        return (
+                                            <Menu.Item
+                                                key={`sub${subIndex}-${itemIndex}`}
+                                                url={item.url}>
+                                                {item.title}
+                                            </Menu.Item>
+                                        )
+                                    })
                                 }
-                            >
-                                <Menu.Item key="changePassword" onClick={() => {
-                                    // setPassVisible(true)
-                                }}>修改密码</Menu.Item>
-                                <Menu.Item key="logout" onClick={() => {
-                                    // common.setToken(null)
-                                    common.redirectToLogin()
-                                }}>退出登录</Menu.Item>
                             </SubMenu>
-                        </Menu>
-                    </Header>
 
-                    <Content
-                        className="content"
-                        style={{
-                            margin: '24px 16px',
-                            padding: 24,
-                        }}
+                        ))
+                    }
+                </Menu>
+            </Sider>
+            <Layout className="site-layout">
+                <Header className="site-layout-background" style={{padding: 0}}>
+                    {
+                        collapsed ?
+                            <MenuUnfoldOutlined
+                                className="trigger"
+                                onClick={toggle}
+                            /> :
+                            <MenuFoldOutlined
+                                className="trigger"
+                                onClick={toggle}
+                            />
+                    }
+                    <Menu
+                        // theme={headerTheme}
+                        mode="horizontal"
+                        defaultSelectedKeys={['2']}
+                        style={{lineHeight: '47px', float: 'right'}}
                     >
-                        {props.children}
-                    </Content>
-                </Layout>
+                        <SubMenu
+                            title={
+                                <span className="submenu-title-wrapper">{"管理员"}</span>
+                            }
+                        >
+                            <Menu.Item key="changePassword" onClick={() => {
+                                // setPassVisible(true)
+                            }}>修改密码</Menu.Item>
+                            <Menu.Item key="logout" onClick={() => {
+                                // common.setToken(null)
+                                common.redirectToLogin()
+                            }}>退出登录</Menu.Item>
+                        </SubMenu>
+                    </Menu>
+                </Header>
+
+                <Content className="content">
+                    {props.children}
+                </Content>
             </Layout>
-        </div>
+        </Layout>
     );
 }
 

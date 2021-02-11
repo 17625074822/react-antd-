@@ -1,6 +1,7 @@
 .SideLayout {
   // 占满屏幕
-  height: calc(100vh);
+  //height: calc(100vh);
+  min-height: 704px;
 
   .logo {
     height: 32px;
@@ -25,27 +26,31 @@
   }
 
   .content {
-    margin: 15px 13px;
-    padding: 15px;
     background: #fff;
-    min-height: 600px;
+    min-height: 675px;
+    margin: 15px !important;;
+    padding: 10px !important;
+    //min-width: 1010px;
   }
 
   .ant-layout-header {
     height: 48px;
     line-height: 48px;
     background: #fff;
-    margin-top: 1px;
+    //margin-top: 1px;
   }
 
   .site-layout .site-layout-background {
     background: #fff;
   }
 
-  .ant-layout-sider{
+  .ant-layout-sider {
     min-height: 674px;
+    background: #001529;
   }
 
+
+  // 管理者名称
   .user {
     float: right;
   }
