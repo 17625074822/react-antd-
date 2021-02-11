@@ -98,7 +98,7 @@ function Index(props) {
                         // theme={headerTheme}
                         mode="horizontal"
                         defaultSelectedKeys={['2']}
-                        style={{lineHeight: '47px', float: 'right'}}
+                        style={{lineHeight: '47px', float: 'right', borderColor: "#fff"}}
                     >
                         <SubMenu
                             title={
