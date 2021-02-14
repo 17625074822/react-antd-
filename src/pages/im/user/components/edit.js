@@ -7,8 +7,7 @@ import {RollbackOutlined} from "@ant-design/icons";
 
 function Edit(props) {
 
-    let id = props.match.params.id
-    console.log("id", id)
+    let uuid = props.match.params.uuid
 
     return (
         <React.Fragment>
@@ -17,7 +16,7 @@ function Edit(props) {
                     props.history.goBack()//返回上一页
                 }}>返回</Button>
             </PageTop>
-                <UserDetail id={id}/>
+                <UserDetail uuid={uuid}/>
         </React.Fragment>
     )
 }

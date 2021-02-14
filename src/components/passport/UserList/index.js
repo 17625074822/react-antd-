@@ -260,20 +260,7 @@ function UserList(props) {
                 dataSource={userList}
                 scroll={{x: '100%', y: "360px"}}
                 rowKey={'id'} pagination={false}/>
-            <PageBottom children={
-                <div>
-                    {/*<Button onClick={() => {*/}
-                    {/*    if (keys.length <= 0) {*/}
-                    {/*        common.confirm('请选择数据')*/}
-                    {/*        return*/}
-                    {/*    }*/}
-
-                    {/*    common.confirm('确定禁用吗？', () => {*/}
-                    {/*        disableByIds()*/}
-                    {/*    })*/}
-                    {/*}}>禁用</Button>*/}
-                </div>
-            } pagination={
+            <PageBottom pagination={
                 <Pagination
                     onChange={handlePageChange}
                     onShowSizeChange={handlePageChange}

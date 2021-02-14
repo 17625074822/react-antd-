@@ -8,7 +8,7 @@ function Passport() {
     return (
         <div>
             <Switch>
-                <Route path={'/passport/user'} component={User}/>
+                <Route path={'/im/user'} component={User}/>
                 {/*<Route path={'/passport/employee'} component={Employee}/>*/}
                 {/*<Route path={'/passport/partner'} component={Partner}/>*/}
             </Switch>

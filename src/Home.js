@@ -1,7 +1,7 @@
 import React from 'react'
 import {Switch, Route, Link} from "react-router-dom"
 import SideLayout from "./components/layout/SideLayout"
-import Passport from "./pages/passport";
+import IM from "./pages/im";
 import RedEnvelope from "./pages/gift/redEnvelope/components";
 
 function Welcome(props) {
@@ -19,7 +19,7 @@ function Home() {
             <SideLayout>
                 <Switch>
                     <Route exact path={'/'} component={Welcome}/>
-                    <Route path={'/passport'} component={Passport}/>
+                    <Route path={'/im'} component={IM}/>
                     <Route path={'/gift'} component={RedEnvelope}/>
                     {/*<Route path={'/example'} component={Example}/>*/}
                     {/*<Route path={'/wms'} component={Wms}/>*/}

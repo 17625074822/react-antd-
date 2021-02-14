@@ -271,7 +271,7 @@ common.ajax = function (method, api, data, config = {}) {
             timeout: config.timeout,
             responseType: config['responseType']
         }).then((response) => {
-
+            console.log("response", response)
             // 二进制直接下载
             if (config['responseType'] === 'blob') {
                 const filename = config['filename']
@@ -296,37 +296,48 @@ common.ajax = function (method, api, data, config = {}) {
                 return;
             }
 
-            //response.data:  {code:"SUCCESS", message:"xxx", data: "xxx"}
-            if (response.data.code === 'SUCCESS') {
-                resolve(response.data.data)
+            //response.data:  {success:true, message:"xxx"}
+            // 成功返回数据
+            if (response.data.success) {
+                console.log("response.data")
+                console.log(response.data)
+                resolve(response.data)
                 return
             }
 
-            switch (response.data.code) {
-                case 'INVALID_TOKEN':
-                    if (config.interceptInvalidToken) {
-
-                        // common.setToken(null)
-
-                        if (config.displayError) {
-                            common.toast('请登录')
-                        }
-
-                        common.redirectToLogin()
-                    }
-                    break
-
-                default:
-                    if (config.displayError) {
-                        common.alert(response.data.message)
-                    }
+            // 报错提醒
+            if (!response.data.success) {
+                common.alert(response.data.message)
             }
+
+            console.log("config", config)
+            // switch (response.data.code) {
+            //     case 'INVALID_TOKEN':
+            //         if (config.interceptInvalidToken) {
+            //
+            //             // common.setToken(null)
+            //
+            //             // if (config.displayError) {
+            //             //     common.toast('请登录')
+            //             // }
+            //
+            //             common.redirectToLogin()
+            //         }
+            //         break
+            //
+            //     default:
+            //     if (config.displayError) {
+            //         // common.alert(response.data.message)
+            //         common.alert(response.data.message)
+            //     }
+            // }
 
             reject(response.data)
 
         }).catch((error) => {
-            config.displayError && common.alert("" + error)
-            reject({code: 'ERROR', message: '' + error, data: null})
+            console.log("error", error);
+            // config.displayError && common.alert("" + error)
+            // reject({code: 'ERROR', message: '' + error, data: null})
         })
 
     })

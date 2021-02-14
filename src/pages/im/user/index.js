@@ -12,8 +12,8 @@ function User() {
         <div>
             <Switch>
                 {/*<Route path={'/passport/customer/create'} component={Create}/>*/}
-                <Route exact path={'/passport/user/edit/:id'} component={Edit}/>
-                <Route exact path={'/passport/user'} component={Index}/>
+                <Route exact path={'/im/user/edit/:uuid'} component={Edit}/>
+                <Route exact path={'/im/user'} component={Index}/>
             </Switch>
         </div>
     )

@@ -17,7 +17,7 @@ const menuTreeNode = [
         title: "用户管理",
         icon: <UserOutlined/>,
         children: [
-            {title: '用户列表', url: '/passport/user'},
+            {title: '用户列表', url: '/im/user'},
         ]
     },
     {
