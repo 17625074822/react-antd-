@@ -76,11 +76,6 @@ common.alert = function (content, callback, title) {
             callback()
         },
     });
-
-    window.popup.alert(content, function () {
-        callback()
-    });
-
 }
 
 common.toast = function (content, callback, duration) {
@@ -94,13 +89,6 @@ common.toast = function (content, callback, duration) {
     setTimeout(() => {
         callback()
     }, duration * 1000);
-
-    // const modal = Modal.success({
-    //     // title: 'This is a notification message',
-    //     content: content,
-    // });
-    //
-    // window.popup.cute(content, duration * 1000, callback);
 }
 
 common.loadingStart = function (message) {
@@ -142,7 +130,8 @@ common.loadingStart = function (message) {
         height: 60px;
         border-radius: 100%;
         border: 5px #aaa solid;
-        border-right-color: #1890ff;
+        // border-right-color: #1890ff;
+        border-right-color: #EF4566;
         animation: loading 1s linear infinite;
     }
 
@@ -192,8 +181,6 @@ common.confirm = function (message, okCallback, cancelCallback, title) {
             cancelCallback()
         },
     });
-
-    // window.popup.confirm(message, okCallback, cancelCallback);
 }
 
 
@@ -336,8 +323,8 @@ common.ajax = function (method, api, data, config = {}) {
 
         }).catch((error) => {
             console.log("error", error);
-            // config.displayError && common.alert("" + error)
-            // reject({code: 'ERROR', message: '' + error, data: null})
+            config.displayError && common.alert("" + error)
+            reject({code: 'ERROR', message: '' + error, data: null})
         })
 
     })

@@ -58,8 +58,8 @@ function UserDetail(props) {
     let getFollowerFriend = () => {
         console.log("uuid", uuid)
         common.loadingStart();
-        // common.ajax('get', '/im/im_user/findFollowingListByUuid/' + friendPagination.page + "/" + friendPagination.limit +
-        common.ajax('get', "/im/im_user/findFollowingListByUuid?uuid=" + uuid)
+        // common.ajax('get', '/im/im_user/findFollowingListByUUID/' + friendPagination.page + "/" + friendPagination.limit +
+        common.ajax('get', "/im/im_user/findFollowingListByUUID?uuid=" + uuid)
             .then(data => {
                 followFriendList = data.list || []
                 setFollowFriendList([...followFriendList])
@@ -73,8 +73,8 @@ function UserDetail(props) {
     let getBeFollowerFriend = () => {
         console.log("uuid", uuid)
         common.loadingStart();
-        // common.ajax('get', '/im/im_user/findBeFollowingListByUuid/' + friendPagination.page + "/" + friendPagination.limit +
-        common.ajax('get', "/im/im_user/findBeFollowingListByUuid?uuid=" + uuid)
+        // common.ajax('get', '/im/im_user/findBeFollowingListByUUID/' + friendPagination.page + "/" + friendPagination.limit +
+        common.ajax('get', "/im/im_user/findBeFollowingListByUUID?uuid=" + uuid)
             .then(data => {
                 console.log("被关注的好友列表", data)
                 beFollowFriendList = data.list || []

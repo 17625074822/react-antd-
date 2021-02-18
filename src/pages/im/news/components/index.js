@@ -120,12 +120,13 @@ function User(props) {
                 }
             }
         })
-        common.ajax('get', '/im/im_user/page/' +
+        common.ajax('get', '/im/im_user_news/page/' +
             pagination.page + "/" + pagination.limit +
             "?query=" + encodeURI(
                 JSON.stringify(queryMap)
             ))
             .then(data => {
+                console.log("动态列表", data)
                 userList = data.list || []
                 setUserList(userList)
                 setTotal(data.total)
@@ -146,7 +147,7 @@ function User(props) {
 
     return (
         <React.Fragment>
-            <PageTop title={"用户列表管理"}/>
+            <PageTop title={"动态列表管理"}/>
             <SearchArea>
                 <Form form={form} className="ant-advanced-search-form">
                     <Row gutter={24}>

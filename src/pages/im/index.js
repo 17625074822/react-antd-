@@ -2,6 +2,7 @@ import React from "react";
 import {Route, Switch} from "react-router-dom";
 
 import User from "./user"
+import News from "./news"
 
 function Passport() {
 
@@ -9,8 +10,7 @@ function Passport() {
         <div>
             <Switch>
                 <Route path={'/im/user'} component={User}/>
-                {/*<Route path={'/passport/employee'} component={Employee}/>*/}
-                {/*<Route path={'/passport/partner'} component={Partner}/>*/}
+                <Route path={'/im/news'} component={News}/>
             </Switch>
         </div>
     )

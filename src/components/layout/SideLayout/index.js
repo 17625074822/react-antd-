@@ -18,6 +18,7 @@ const menuTreeNode = [
         icon: <UserOutlined/>,
         children: [
             {title: '用户列表', url: '/im/user'},
+            {title: '动态列表', url: '/im/news'},
         ]
     },
     {
@@ -58,10 +59,10 @@ function Index(props) {
             <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg">
                 <div className="logo">
                     <Link to={'/'}>
-                        <div className="logo">{collapsed ? 'MC' : 'Social MC'}</div>
+                        <div className="logo">{collapsed ? 'mc' : 'Social MC'}</div>
                     </Link>
                 </div>
-                <Menu theme="dark" mode="inline" onClick={handleMenuClick}>
+                <Menu theme="light" mode="inline" onClick={handleMenuClick}>
                     {
                         menuTreeNode.map((sub, subIndex) => (
                             <SubMenu key={subIndex} icon={sub.icon} title={sub.title}>
@@ -99,7 +100,9 @@ function Index(props) {
                         // theme={headerTheme}
                         mode="horizontal"
                         defaultSelectedKeys={['2']}
-                        style={{lineHeight: '45px', float: 'right', borderColor: "#fff"}}
+                        style={{lineHeight: '45px', float: 'right',
+                            // borderColor: "#fff"
+                        }}
                     >
                         <SubMenu
                             title={
