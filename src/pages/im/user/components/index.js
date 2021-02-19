@@ -143,7 +143,6 @@ function User(props) {
         getUserList()
     }, [pagination, query])
 
-
     return (
         <React.Fragment>
             <PageTop title={"用户列表管理"}/>

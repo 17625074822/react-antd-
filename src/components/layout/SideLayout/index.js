@@ -33,7 +33,6 @@ const menuTreeNode = [
 function Index(props) {
 
     let history = useHistory()
-    let defaultOpenKeys = "/"
     let [collapsed, setCollapsed] = useState(false)
 
     let toggle = () => {
@@ -48,18 +47,20 @@ function Index(props) {
     }
 
     // 高度自适应
-    useEffect(() => {
-        console.log("进来了")
-        let content = document.getElementsByClassName('content')[0]
-        content.style.minHeight = window.innerHeight - 78 + "px";
-    }, [props])
+    // useEffect(() => {
+    //     console.log("进来了")
+    //     let content = document.getElementsByClassName('content')[0]
+    //     content.style.minHeight = window.innerHeight - 78 + "px";
+    // }, [props])
 
     return (
         <Layout className={"SideLayout"}>
             <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg">
                 <div className="logo">
                     <Link to={'/'}>
-                        <div className="logo">{collapsed ? 'mc' : 'Social MC'}</div>
+                        <div className="logo">
+                            {collapsed ? 'mc' : 'Social MC'}
+                        </div>
                     </Link>
                 </div>
                 <Menu theme="light" mode="inline" onClick={handleMenuClick}>
@@ -100,7 +101,8 @@ function Index(props) {
                         // theme={headerTheme}
                         mode="horizontal"
                         defaultSelectedKeys={['2']}
-                        style={{lineHeight: '45px', float: 'right',
+                        style={{
+                            lineHeight: '45px', float: 'right',
                             // borderColor: "#fff"
                         }}
                     >

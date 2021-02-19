@@ -92,6 +92,7 @@ common.toast = function (content, callback, duration) {
 }
 
 common.loadingStart = function (message) {
+
     message = message || '加载中...'
 
     // window.popup.loading(true);
@@ -146,12 +147,78 @@ common.loadingStart = function (message) {
 
     container.appendChild(style)
     document.getElementsByTagName("body")[0].appendChild(container)
-
 }
 
-common.loadingStop = function () {
-    // window.popup.loading(false);
+// common.loadingStart = function (message) {
+//
+//     message = message || '加载中...'
+//
+//     // window.popup.loading(true);
+//
+//     let mask = document.createElement("div")
+//     mask.setAttribute("id", "myloadingmask")
+//     mask.style.position = "absolute"
+//     // mask.style.backgroundColor = "#eee"
+//     mask.style.width = "100%"
+//     mask.style.height = "100%"
+//     mask.style.zIndex = 999
+//     mask.style.top = "0px"
+//     mask.style.left = "0px"
+//     document.getElementsByTagName("body")[0].appendChild(mask)
+//
+//     let container = document.createElement("div")
+//     container.setAttribute("id", "myloading")
+//     container.setAttribute("class", "lds-ripple")
+//
+//     let loading1 = document.createElement("div")
+//     let loading2 = document.createElement("div")
+//     container.appendChild(loading1)
+//     container.appendChild(loading2)
+//
+//     let style = document.createElement("style")
+//     style.innerHTML = `
+//      .lds-ripple {
+//         z-index: 10000;
+//         position: fixed;
+//         left: 50%;
+//         top: 50%;
+//         transform: translate(-50%, -50%);
+//     }
+//
+//     .lds-ripple div {
+//       position: absolute;
+//       border: 4px solid #EF4566;
+//       opacity: 1;
+//       border-radius: 50%;
+//       animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+//     }
+//
+//     .lds-ripple div:nth-child(2) {
+//       animation-delay: -0.5s;
+//     }
+//
+//     @keyframes lds-ripple {
+//       0% {
+//         top: 36px;
+//         left: 36px;
+//         width: 0;
+//         height: 0;
+//         opacity: 1;
+//       }
+//       100% {
+//         top: 0px;
+//         left: 0px;
+//         width: 72px;
+//         height: 72px;
+//         opacity: 0;
+//       }
+//     }`
+//
+//     container.appendChild(style)
+//     document.getElementsByTagName("body")[0].appendChild(container)
+// }
 
+common.loadingStop = function () {
     let myloading = document.getElementById("myloading")
     if (myloading) {
         document.getElementsByTagName("body")[0].removeChild(myloading)
