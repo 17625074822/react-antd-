@@ -141,7 +141,7 @@ function User(props) {
     }
 
     useEffect(() => {
-        getUserList()
+        // getUserList()
     }, [pagination, query])
 
 

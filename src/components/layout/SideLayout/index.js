@@ -16,16 +16,18 @@ const menuTreeNode = [
     {
         title: "用户管理",
         icon: <UserOutlined/>,
+        key: 'im',
         children: [
-            {title: '用户列表', url: '/im/user'},
-            {title: '动态列表', url: '/im/news'},
+            {title: '用户列表', url: '/im/user', key: "user"},
+            {title: '动态列表', url: '/im/news', key: "news"},
         ]
     },
     {
         title: "红包管理",
         icon: <RedEnvelopeOutlined/>,
+        key: 'gift',
         children: [
-            {title: '红包列表', url: '/gift/redEnvelope'},
+            {title: '红包列表', url: '/gift/redEnvelope', key: "redEnvelope"},
         ]
     }
 ]
@@ -33,18 +35,38 @@ const menuTreeNode = [
 function Index(props) {
 
     let history = useHistory()
+    let [state, setState] = useState("/")
+    let [openKeys, setOpenKeys] = useState([])
+    let [selectedKeys, setSelectedKeys] = useState([])
     let [collapsed, setCollapsed] = useState(false)
 
     let toggle = () => {
         setCollapsed(!collapsed)
     };
 
-    // 点击菜单跳转页面
-    function handleMenuClick(item, key, keyPath, domEvent) {
-        console.log(console.log("key", key, keyPath, domEvent))
-        console.log("url", item.item.props.url)
-        history.push(item.item.props.url)
+    //点击菜单展开
+    let onOpenChange = (openKeys) => {
+        setOpenKeys(openKeys)
     }
+
+    // 点击子菜单跳转页面
+    function handleMenuClick(item) {
+        history.push(item.item.props.url)
+        selectedKeys = [item.key]
+        setSelectedKeys(selectedKeys)
+        console.log("selectedKeys", selectedKeys)
+    }
+
+    // 菜单栏
+    useEffect(() => {
+        let pathname = window.location.pathname.replace(/#|\?.*$/g, '')// 获取路由地址
+        let pathnameArr = pathname.split("/").filter(item => item !== "")
+        openKeys = [pathnameArr.shift()]
+        setOpenKeys([...openKeys])
+        selectedKeys = [pathnameArr.pop()]
+        setSelectedKeys(selectedKeys)
+        console.log("selectedKeys", selectedKeys)
+    }, [])
 
     // 高度自适应
     // useEffect(() => {
@@ -63,15 +85,17 @@ function Index(props) {
                         </div>
                     </Link>
                 </div>
-                <Menu theme="light" mode="inline" onClick={handleMenuClick}>
+                <Menu
+                    openKeys={openKeys} selectedKeys={selectedKeys}
+                    mode="inline" onClick={handleMenuClick} onOpenChange={onOpenChange}>
                     {
                         menuTreeNode.map((sub, subIndex) => (
-                            <SubMenu key={subIndex} icon={sub.icon} title={sub.title}>
+                            <SubMenu key={sub.key} icon={sub.icon} title={sub.title}>
                                 {
                                     sub.children.map((item, itemIndex) => {
                                         return (
                                             <Menu.Item
-                                                key={`sub${subIndex}-${itemIndex}`}
+                                                key={item.key}
                                                 url={item.url}>
                                                 {item.title}
                                             </Menu.Item>

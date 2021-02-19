@@ -140,7 +140,7 @@ function User(props) {
     }
 
     useEffect(() => {
-        getUserList()
+        // getUserList()
     }, [pagination, query])
 
     return (
