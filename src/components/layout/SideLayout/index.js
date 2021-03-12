@@ -80,7 +80,7 @@ function SideLayout(props) {
                 console.log(item.title)
                 dispatch(switchMenu(item.title))
                 item.children.forEach(children => {
-                    console.log(children,"children")
+                    console.log(children, "children")
                     if (children.key === pathnameArr[1]) {
                         console.log("children.title", children.title)
                         dispatch(switchMenuItem(children.title))
@@ -95,7 +95,12 @@ function SideLayout(props) {
         <Layout className={"SideLayout"}>
             <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg">
                 <div className="logo">
-                    <Link to={'/'}>
+                    {/*<Link to={'/'}>*/}
+                    {/*    <div className="logo">*/}
+                    {/*        {collapsed ? 'mc' : 'Social MC'}*/}
+                    {/*    </div>*/}
+                    {/*</Link>*/}
+                    <Link>
                         <div className="logo">
                             {collapsed ? 'mc' : 'Social MC'}
                         </div>
