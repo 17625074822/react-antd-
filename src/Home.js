@@ -3,6 +3,8 @@ import {Switch, Route, Link} from "react-router-dom"
 import SideLayout from "./components/layout/SideLayout"
 import IM from "./pages/im";
 import RedEnvelope from "./pages/gift/redEnvelope/components";
+import {connect} from "react-redux"
+import {Row} from "antd";
 
 function Welcome(props) {
     return (
@@ -13,7 +15,7 @@ function Welcome(props) {
     )
 }
 
-function Home() {
+function Home(props) {
     return (
         <div style={{height: "100%"}}>
             <SideLayout>
@@ -37,4 +39,7 @@ function Home() {
     )
 }
 
-export default Home;
+
+export default Home
+
+// export default Home;

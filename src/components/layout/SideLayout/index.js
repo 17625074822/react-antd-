@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Button, Layout, Menu} from "antd";
-import {connect} from 'react-redux'
+import {Layout, Menu} from "antd";
 import common from "../../../utils/common"
 import {
     MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined, RedEnvelopeOutlined
@@ -8,6 +7,9 @@ import {
 import "./index.less"
 import {Link, withRouter} from "react-router-dom"
 import {useHistory} from "react-router-dom";
+import {connect} from "react-redux"
+import HeaderBar from "../HeaderBar";
+import {switchMenu, switchMenuItem} from "../../../redux/action";
 
 const {Header, Sider, Content} = Layout
 const {SubMenu} = Menu
@@ -32,14 +34,12 @@ const menuTreeNode = [
     }
 ]
 
-function Index(props) {
-
+function SideLayout(props) {
+    const {dispatch} = props
     let history = useHistory()
-    let [state, setState] = useState("/")
     let [openKeys, setOpenKeys] = useState([])
     let [selectedKeys, setSelectedKeys] = useState([])
     let [collapsed, setCollapsed] = useState(false)
-
     let toggle = () => {
         setCollapsed(!collapsed)
     };
@@ -50,7 +50,7 @@ function Index(props) {
     }
 
     // 点击子菜单跳转页面
-    function handleMenuClick(item) {
+    let handleMenuItemClick = (item, key, keyPath, domEvent) => {
         history.push(item.item.props.url)
         selectedKeys = [item.key]
         setSelectedKeys(selectedKeys)
@@ -65,15 +65,31 @@ function Index(props) {
         setOpenKeys([...openKeys])
         selectedKeys = [pathnameArr.pop()]
         setSelectedKeys(selectedKeys)
-        console.log("selectedKeys", selectedKeys)
+
+
     }, [])
 
-    // 高度自适应
-    // useEffect(() => {
-    //     console.log("进来了")
-    //     let content = document.getElementsByClassName('content')[0]
-    //     content.style.minHeight = window.innerHeight - 78 + "px";
-    // }, [props])
+    useEffect(() => {
+        let pathname = window.location.pathname.replace(/#|\?.*$/g, '')// 获取路由地址
+        let pathnameArr = pathname.split("/").filter(item => item !== "")
+        console.log(123)
+        console.log(pathnameArr, "pathnameArr")
+        // 设置面包屑 存到redux中
+        menuTreeNode.forEach(item => {
+            if (item.key === pathnameArr[0]) {
+                console.log(item.title)
+                dispatch(switchMenu(item.title))
+                item.children.forEach(children => {
+                    console.log(children,"children")
+                    if (children.key === pathnameArr[1]) {
+                        console.log("children.title", children.title)
+                        dispatch(switchMenuItem(children.title))
+                    }
+                })
+            }
+        })
+    }, [props])
+
 
     return (
         <Layout className={"SideLayout"}>
@@ -85,9 +101,8 @@ function Index(props) {
                         </div>
                     </Link>
                 </div>
-                <Menu
-                    openKeys={openKeys} selectedKeys={selectedKeys}
-                    mode="inline" onClick={handleMenuClick} onOpenChange={onOpenChange}>
+                <Menu openKeys={openKeys} selectedKeys={selectedKeys}
+                      mode="inline" onClick={handleMenuItemClick} onOpenChange={onOpenChange}>
                     {
                         menuTreeNode.map((sub, subIndex) => (
                             <SubMenu key={sub.key} icon={sub.icon} title={sub.title}>
@@ -121,6 +136,10 @@ function Index(props) {
                                 onClick={toggle}
                             />
                     }
+
+                    {/* 面包屑 */}
+                    <HeaderBar/>
+
                     <Menu
                         // theme={headerTheme}
                         mode="horizontal"
@@ -128,13 +147,10 @@ function Index(props) {
                         style={{
                             lineHeight: '45px', float: 'right',
                             // borderColor: "#fff"
-                        }}
-                    >
-                        <SubMenu
-                            title={
-                                <span className="submenu-title-wrapper">{"管理员"}</span>
-                            }
-                        >
+                        }}>
+                        <SubMenu title={
+                            <span className="submenu-title-wrapper">{"管理员"}</span>
+                        }>
                             <Menu.Item key="changePassword" onClick={() => {
                                 // setPassVisible(true)
                             }}>修改密码</Menu.Item>
@@ -145,7 +161,6 @@ function Index(props) {
                         </SubMenu>
                     </Menu>
                 </Header>
-
                 <Content className="content">
                     {props.children}
                 </Content>
@@ -154,24 +169,10 @@ function Index(props) {
     );
 }
 
-// const mapStateToProps = (state) => {
+// const mapStateToProps = state => {
 //     return {
-//         user: state.user,
-//         permission: state.permission,
+//         menuName: state.menuName
 //     }
 // }
-//
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         changeUser: (user) => {
-//             dispatch({type: 'CHANGE_USER', user: user})
-//         },
-//         changeTasks: (tasks) => {
-//             dispatch({type: 'CHANGE_TASKS', tasks: tasks})
-//         }
-//     }
-// }
-// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Index))
 
-export default Index
-
+export default withRouter(connect()(SideLayout))
