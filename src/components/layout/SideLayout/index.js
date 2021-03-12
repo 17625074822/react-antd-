@@ -100,11 +100,9 @@ function SideLayout(props) {
                     {/*        {collapsed ? 'mc' : 'Social MC'}*/}
                     {/*    </div>*/}
                     {/*</Link>*/}
-                    <Link>
                         <div className="logo">
                             {collapsed ? 'mc' : 'Social MC'}
                         </div>
-                    </Link>
                 </div>
                 <Menu openKeys={openKeys} selectedKeys={selectedKeys}
                       mode="inline" onClick={handleMenuItemClick} onOpenChange={onOpenChange}>

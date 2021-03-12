@@ -24,10 +24,10 @@ module.exports = {
             options: {
                 lessLoaderOptions: {
                     lessOptions: {
-
                         modifyVars: {
                             ...compactTheme,
                             '@primary-color': '#EF4566'
+                            // '@primary-color': '#4D94FF'
                         },
                         javascriptEnabled: true,
                     },
