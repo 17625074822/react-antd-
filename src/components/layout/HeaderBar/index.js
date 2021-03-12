@@ -6,8 +6,6 @@ import {switchMenu} from "../../../redux/action";
 
 function HeaderBar(props) {
     const {menuName, menuItemName} = props;
-    console.log("menuName", menuName)
-    console.log("menuItemName", menuItemName)
     return (
         <span style={{display: "inline-block"}}>
             {

@@ -229,9 +229,6 @@ function RedEnvelope(props) {
                                     setPagination({...pagination, page: 1})
                                     setQuery(initialSearch)
                                 }}>清空</Button>
-                                {/*搜索方案保存*/}
-                                {/*<SearchPlanButton initSearch={initialSearch} url={'/passport/user'}*/}
-                                {/*                  search={search} setSearch={setSearch}/>*/}
                             </div>
                         </Col>
                     </Row>
