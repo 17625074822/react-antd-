@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #loading-mask{
+                position:absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                z-index:20000;
+                
+            }
+            #loading{
+                position:absolute;
+                left:45%;
+                top:40%;
+                padding:2px;
+                z-index:20001;
+                height:auto;
+         }
+            #loading .loading-indicator{
+                background:white;
+                color:#444;
+                font:bold 20px tahoma,arial,helvetica;
+                padding:10px;
+                margin:0;
+                height:auto;
+            }
+            #loading-msg {
+                font: normal 18px arial,tahoma,sans-serif;
+            }
+        </style>
+</head>
+
+<body>
+    <div id='loading-mask'></div>
+    <div id="loading">
+        <div class="loading-indicator">
+           <img src="large-loading.gif" width="32" height="32" style="margin-right:8px;float:left;vertical-align:top;"/> 
+           <br/><span id="loading-msg">Loading ...</span>
+        </div>
+    </div>
+</body>
+</html>

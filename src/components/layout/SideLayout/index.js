@@ -25,6 +25,15 @@ const menuTreeNode = [
         ]
     },
     {
+        title: "测试案例",
+        icon: <UserOutlined/>,
+        key: 'example',
+        children: [
+            {title: '点击评论', url: '/example/comment', key: "comment"},
+            {title: '精准匹配', url: '/example/exact', key: "exact"},
+        ]
+    },
+    {
         title: "红包管理",
         icon: <RedEnvelopeOutlined/>,
         key: 'gift',
@@ -100,9 +109,9 @@ function SideLayout(props) {
                     {/*        {collapsed ? 'mc' : 'Social MC'}*/}
                     {/*    </div>*/}
                     {/*</Link>*/}
-                        <div className="logo">
-                            {collapsed ? 'mc' : 'Social MC'}
-                        </div>
+                    <div className="logo">
+                        {collapsed ? 'mc' : 'Social MC'}
+                    </div>
                 </div>
                 <Menu openKeys={openKeys} selectedKeys={selectedKeys}
                       mode="inline" onClick={handleMenuItemClick} onOpenChange={onOpenChange}>

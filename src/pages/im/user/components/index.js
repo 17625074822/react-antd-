@@ -140,8 +140,13 @@ function User(props) {
     }
 
     useEffect(() => {
-        // getUserList()
-    }, [pagination, query])
+        for (let i = 0; i < 15; i++) {
+            userList.push({username: "username" + i})
+        }
+        setUserList([...userList])
+    }, [ ])
+    // }, [pagination, query])
+
 
     return (
         <React.Fragment>
