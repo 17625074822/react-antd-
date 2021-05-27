@@ -24,49 +24,49 @@ function SignIn(props) {
             password: values.password
         };
 
-        common.loadingStart()
-
-        common.ajax("post", "/passport/user/createToken", params, {useToken: false}).then((data) => {
-
-            //保存Token
-            common.setToken(data.token)
-
-            //拉取当前用户的基础信息
-            common.ajax("get", "/passport/user/whoami").then((data) => {
-
-                let user = {
-                    nickname: data.nickname,
-                    avatar: data.avatar,
-                    tenant: {name: data.tenantName},
-                    company: {id: data.companyId, name: data.companyName},
-                    brand: {id: data.brandId, name: data.brandName},
-                    type: data.type ? data.type : '',
-                    tenantEmployee: data.tenantEmployee ? data.tenantEmployee : false,
-                }
-
-                // 获取当前用户在指定公司下的权限
-                // common.ajax('get', '/passport/task/findTaskIdsByAuthUser', {companyId: data.companyId}).then((tasks) => {
-                //     props.changeTasks(tasks)
-                // })
-
-                // todo
-                // props.changeUser(user)
-
-                //跳转到首页
-                props.history.push("/")
-
-                // if (data.type === 'tenant' || data.tenantEmployee) {
-                //     //管理帐号、集团数据，直接跳转到集团后端，去配置初始数据
-                //     props.history.push("/admin")
-                // } else {
-                //     //跳转到首页
-                //     props.history.push("/")
-                // }
-            })
-
-        }).finally(() => {
-            common.loadingStop()
-        })
+        // common.loadingStart()
+        //
+        // common.ajax("post", "/passport/user/createToken", params, {useToken: false}).then((data) => {
+        //
+        //     //保存Token
+        //     common.setToken(data.token)
+        //
+        //     //拉取当前用户的基础信息
+        //     common.ajax("get", "/passport/user/whoami").then((data) => {
+        //
+        //         let user = {
+        //             nickname: data.nickname,
+        //             avatar: data.avatar,
+        //             tenant: {name: data.tenantName},
+        //             company: {id: data.companyId, name: data.companyName},
+        //             brand: {id: data.brandId, name: data.brandName},
+        //             type: data.type ? data.type : '',
+        //             tenantEmployee: data.tenantEmployee ? data.tenantEmployee : false,
+        //         }
+        //
+        //         // 获取当前用户在指定公司下的权限
+        //         // common.ajax('get', '/passport/task/findTaskIdsByAuthUser', {companyId: data.companyId}).then((tasks) => {
+        //         //     props.changeTasks(tasks)
+        //         // })
+        //
+        //         // todo
+        //         // props.changeUser(user)
+        //
+        //         //跳转到首页
+        //         props.history.push("/")
+        //
+        //         // if (data.type === 'tenant' || data.tenantEmployee) {
+        //         //     //管理帐号、集团数据，直接跳转到集团后端，去配置初始数据
+        //         //     props.history.push("/admin")
+        //         // } else {
+        //         //     //跳转到首页
+        //         //     props.history.push("/")
+        //         // }
+        //     })
+        //
+        // }).finally(() => {
+        //     common.loadingStop()
+        // })
     }
 
     return (

@@ -31,6 +31,8 @@ const menuTreeNode = [
         children: [
             {title: '点击评论', url: '/example/comment', key: "comment"},
             {title: '精准匹配', url: '/example/exact', key: "exact"},
+            {title: '字体尺寸', url: '/example/fontSize', key: "fontSize"},
+            {title: '流式布局', url: '/example/flex', key: "flex"},
         ]
     },
     {
@@ -104,14 +106,14 @@ function SideLayout(props) {
         <Layout className={"SideLayout"}>
             <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg">
                 <div className="logo">
-                    {/*<Link to={'/'}>*/}
-                    {/*    <div className="logo">*/}
-                    {/*        {collapsed ? 'mc' : 'Social MC'}*/}
-                    {/*    </div>*/}
+                    <Link to={'/'}>
+                        <div className="logo">
+                            {collapsed ? 'mc' : 'Demo'}
+                        </div>
+                    </Link>
+                    {/*<Link className="logo" >*/}
+                    {/*    {collapsed ? 'mc' : 'Demo'}*/}
                     {/*</Link>*/}
-                    <div className="logo">
-                        {collapsed ? 'mc' : 'Social MC'}
-                    </div>
                 </div>
                 <Menu openKeys={openKeys} selectedKeys={selectedKeys}
                       mode="inline" onClick={handleMenuItemClick} onOpenChange={onOpenChange}>

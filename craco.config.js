@@ -25,7 +25,7 @@ module.exports = {
                 lessLoaderOptions: {
                     lessOptions: {
                         modifyVars: {
-                            ...compactTheme,
+                            // ...compactTheme, // 紧凑模式
                             '@primary-color': '#EF4566'
                             // '@primary-color': '#4D94FF'
                         },

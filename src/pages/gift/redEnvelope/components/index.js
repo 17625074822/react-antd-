@@ -176,7 +176,7 @@ function RedEnvelope(props) {
     }
 
     useEffect(() => {
-        getRedEnvelopeList()
+        // getRedEnvelopeList()
     }, [pagination, query])
 
 

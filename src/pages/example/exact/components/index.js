@@ -5,6 +5,8 @@ import "./index.less"
 
 function Comment(props) {
     let [now, setNow] = useState("")
+
+    // 获取当前时间
     let getCurrentDate = () => {
         setInterval(() => {
             let d = new Date();
@@ -12,9 +14,10 @@ function Comment(props) {
             setNow(now)
         }, 1000)
     }
-    useEffect(() => {
-        getCurrentDate()
-    }, [])
+    getCurrentDate()
+
+    // useEffect(() => {
+    // }, [])
 
     return (
         <div id={"exact"} style={{position: "relative"}}>
