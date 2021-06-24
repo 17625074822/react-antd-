@@ -33,6 +33,8 @@ const menuTreeNode = [
             {title: '精准匹配', url: '/example/exact', key: "exact"},
             {title: '字体尺寸', url: '/example/fontSize', key: "fontSize"},
             {title: '流式布局', url: '/example/flex', key: "flex"},
+            {title: '抽屉测试', url: '/example/drawer', key: "drawer"},
+            {title: '上传文件', url: '/example/upload', key: "upload"},
         ]
     },
     {
