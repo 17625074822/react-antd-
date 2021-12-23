@@ -111,9 +111,9 @@ function User(props) {
         let queryMap = {};
         Object.keys(query).forEach(key => {
             console.log("key", key)
-            if (query[key] && query[key] != 0) {
+            if (query[key] && query[key] !== 0) {
                 // 状态
-                if (key == "status") {
+                if (key === "status") {
                     queryMap[key] = query[key]
                 } else {
                     queryMap[key] = {"$like": query[key]}
@@ -126,6 +126,7 @@ function User(props) {
                 JSON.stringify(queryMap)
             ))
             .then(data => {
+                console.log('data', data)
                 userList = data.list || []
                 setUserList(userList)
                 setTotal(data.total)
@@ -140,12 +141,11 @@ function User(props) {
     }
 
     useEffect(() => {
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 5; i++) {
             userList.push({username: "username" + i})
         }
         setUserList([...userList])
-    }, [ ])
-    // }, [pagination, query])
+    }, [])
 
 
     return (
@@ -155,7 +155,7 @@ function User(props) {
                 <Form form={form} className="ant-advanced-search-form">
                     <Row gutter={24}>
                         <Col span={6}>
-                            <FormItem label={"用户昵称"}>
+                            <FormItem label={"用户昵称"} toExponential={} toFixed={}>
                                 <Input
                                     type="text"
                                     placeholder='请输入用户昵称'
@@ -228,8 +228,9 @@ function User(props) {
             <Table
                 columns={columns}
                 dataSource={userList}
-                scroll={{x: '100%'}}
-                rowKey={'uuid'} pagination={false}/>
+                rowKey={'username'}
+                pagination={false}
+            />
             <PageBottom pagination={
                 <Pagination
                     onChange={handlePageChange}
